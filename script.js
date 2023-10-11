@@ -23,6 +23,7 @@ const classChanger = (nodeList, className, command = 'add') =>{
 const createField = (fieldElement) => {
     let invalid = true;
     const errorSpan = fieldElement.nextElementSibling;
+
     const validationChecker = () =>{
         const wrong_patt = fieldElement.validity.patternMismatch;
         const too_long = fieldElement.validity.tooLong;
@@ -32,20 +33,9 @@ const createField = (fieldElement) => {
             && !too_long
             && !too_short){
                 console.log("we have a good input!");
-                return false;
-         }
-         else if(too_long){
-            console.log(`${fieldElement} was too long`);
-            console.log(too_long);
-         }
-         else if(too_short){
-            console.log(`${fieldElement} was too short`);
-            console.log(too_short);
-         }
-         else if(wrong_patt){
-            console.log(`${fieldElement} has the wrong pattern!`);
-            console.log(wrong_patt);
+                return true;
         }
+        return false;
     }
     const isInValid= () => {
         return invalid;
@@ -53,7 +43,7 @@ const createField = (fieldElement) => {
 
     fieldElement.addEventListener("input", (event) => {
         //  call vC , if validation checker comes back true turn invalid false
-        if(validationChecker()){
+        if(!validationChecker()){
             invalid = true;
             errorSpan.classList.remove("valid");
             errorSpan.classList.add("invalid");
@@ -85,7 +75,6 @@ const FormValidation = (function () {
             return {isInValid};
         })();
         const confirmPwdField = (() => {
-
             let invalid = true;
             const errorSpan = document.querySelector(".cp");
             const isInValid = () => {
@@ -102,6 +91,7 @@ const FormValidation = (function () {
                     errorSpan.classList.add("valid");
                 } else {
                     errorSpan.classList.add("noMatch");
+                    invalid = true;
                 }
             })
             return {isInValid};
