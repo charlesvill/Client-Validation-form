@@ -1,0 +1,48 @@
+body{
+	background-color: #edede9;
+	font-family: 'sans-serif';
+	display: flex;
+	align-content: center;
+	justify-content: center;
+}
+.formContainer{
+	background-color: #d6ccc2;
+	padding: 2rem;
+	margin-top: 4rem;
+	box-shadow:0.3em 0.3em .3em rgba(0, 0, 0, 0.2);
+	width: 60%;
+}
+form{
+	display: flex;
+	flex-direction: column;
+	gap: .6rem;
+}
+.cont > div{
+	width: 100%;
+	display: flex;
+	gap: .5rem;
+}
+.cont > div > input{
+	width: 85%;
+}
+.invalid::before{
+	content: "* Field required"; 
+	color: #A82810;
+	font-family: inherit;
+	font-size: .5rem;
+	text-align: center;
+	line-height: .3rem;
+}
+.valid::after{
+	content: "✓";
+}
+.error.cp::before{
+	content: "";
+}
+.noMatch::after{
+	content: "password must match";
+	font-family: inherit;
+	font-size: .5rem;
+	text-align: center;
+	line-height: .3rem;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Client-Validation-Form</title>
+</head>
+<body>
+   <div class="formContainer">
+    <form novalidate id="form">
+        <h3 id="title">Sign up</h3>
+        <div class="cont">
+            <label for="email">Email</label>
+            <div>
+                <input type="email" id="email" pattern="([aA0-zZ9.\-_]){1,30}@([aA0-zZ9.\-_]){1,30}" required>
+                <span aria-live="polite" class="error mail"></span>
+            </div>
+        </div>
+        <div class="cont">
+            <label for="country">Country of Residence</label>
+            <div>
+                <input type="text" id="country" minlength="2" maxlength="60" pattern="([aA-zZ]){2,60}" required>
+                <span aria-live="polite" class="error place"></span>
+            </div>
+        </div>
+        <div class="cont">
+            <label for="zipcode">Zipcode</label>
+            <div>
+                <input type="text" name="zipcode" id="zipcode" minlength="4" maxlength="13" pattern="([0-9]){4,13}" required>
+                <span aria-live="polite" class="error zip"></span>
+            </div>
+        </div>
+        <div class="cont">
+            <label for="password">Create a password</label>
+            <div>
+                <input type="password" name="pwd" id="password" minlength="8" maxlength="40" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required>
+                <span aria-live="polite" class="error p"></span>
+            </div>
+        </div>
+        <div class="cont">
+            <label for="conPassword">Confirm password</label>
+            <div>
+                <input type="password" name="cpwd" id="conPassword">
+                <span aria-live="polite" class="error cp"></span>
+            </div>
+        </div>
+        <button type="submit" id="submitBtn">Submit</button>
+    </form>
+   </div>
+</body>
+</html>
